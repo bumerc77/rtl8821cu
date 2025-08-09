@@ -117,7 +117,7 @@ CONFIG_RTW_UP_MAPPING_RULE = tos
 CONFIG_RTW_MBO = n
 ########################## Android ###########################
 # CONFIG_RTW_ANDROID - 0: no Android, 4/5/6/7/8/9/10/11 : Android version
-CONFIG_RTW_ANDROID = 0
+CONFIG_RTW_ANDROID = 15
 
 ifeq ($(shell test $(CONFIG_RTW_ANDROID) -gt 0; echo $$?), 0)
 ccflags-y += -DCONFIG_RTW_ANDROID=$(CONFIG_RTW_ANDROID)
@@ -127,7 +127,7 @@ endif
 CONFIG_RTW_DEBUG = y
 # default log level is _DRV_INFO_ = 4,
 # please refer to "How_to_set_driver_debug_log_level.doc" to set the available level.
-CONFIG_RTW_LOG_LEVEL = 0
+CONFIG_RTW_LOG_LEVEL = 1
 
 # enable /proc/net/rtlxxxx/ debug interfaces
 CONFIG_PROC_DEBUG = n
