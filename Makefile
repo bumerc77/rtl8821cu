@@ -16,11 +16,11 @@ ccflags-y += -Wno-unused-variable
 #ccflags-y += -Wno-uninitialized
 #ccflags-y += -Wno-vla
 ccflags-y += -Wno-misleading-indentation
-ccflags-y += -Wno-implicit-fallthrough
+#ccflags-y += -Wno-implicit-fallthrough
 #ccflags-y += -Wno-return-type
 #ccflags-y += -Wno-discarded-qualifiers
-ccflags-y += -Wno-missing-prototypes
-ccflags-y += -Wno-missing-declarations
+#ccflags-y += -Wno-missing-prototypes
+#ccflags-y += -Wno-missing-declarations
 # Activates Concurrent Mode if uncommented
 #ccflags-y += -DCONFIG_CONCURRENT_MODE
 
@@ -30,22 +30,22 @@ ccflags-y += -DCONFIG_SW_LED -DCONFIG_RTW_SW_LED
 ccflags-y += -DCONFIG_LED_ENABLE
 
 # gcc-12
-ccflags-y += -Wno-address
-ccflags-y += -Wframe-larger-than=1648
+#ccflags-y += -Wno-address
+#ccflags-y += -Wframe-larger-than=1648
 
 # gcc-13
-ccflags-y += -Wno-enum-int-mismatch
-ccflags-y += -Wno-stringop-overread
+#ccflags-y += -Wno-enum-int-mismatch
+#ccflags-y += -Wno-stringop-overread
 ccflags-y += -Wno-enum-conversion
-ccflags-y += -Wno-int-in-bool-context
-ccflags-y += -Wno-empty-body
+#ccflags-y += -Wno-int-in-bool-context
+#ccflags-y += -Wno-empty-body
 
 GCC_VER_49 := $(shell echo `$(CC) -dumpversion | cut -f1-2 -d.` \>= 4.9 | bc )
 ifeq ($(GCC_VER_49),1)
 ccflags-y += -Wno-date-time	# Fix compile error && warning on gcc 4.9 and later
 endif
 
-ccflags-y += -I$(src)/include
+ccflags-y += -I$(srctree)/$(src)/include
 
 ldflags-y += --strip-debug
 
@@ -294,10 +294,10 @@ _HAL_INTFS_FILES :=	hal/hal_intf.o \
 			hal/led/hal_$(HCI_NAME)_led.o
 
 
-ccflags-y += -I$(src)/platform
+ccflags-y += -I$(srctree)/$(src)/platform
 _PLATFORM_FILES := platform/platform_ops.o
 
-ccflags-y += -I$(src)/hal/btc
+ccflags-y += -I$(srctree)/$(src)/hal/btc
 
 ########### HAL_RTL8188E #################################
 ifeq ($(CONFIG_RTL8188E), y)
@@ -2451,7 +2451,7 @@ ifeq ($(CONFIG_SDIO_HCI), y)
 rtk_core += core/rtw_sdio.o
 endif
 
-ccflags-y += -I$(src)/core/crypto
+ccflags-y += -I$(srctree)/$(src)/core/crypto
 rtk_core += \
 		core/crypto/aes-internal.o \
 		core/crypto/aes-internal-enc.o \
@@ -2577,5 +2577,5 @@ clean:
 endif
 
 # For compatibility with kernels prior to 2.6.24.
-EXTRA_CFLAGS += $(ccflags-y)
-EXTRA_LDFLAGS += $(ldflags-y)
+#EXTRA_CFLAGS += $(ccflags-y)
+#EXTRA_LDFLAGS += $(ldflags-y)

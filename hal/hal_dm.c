@@ -639,7 +639,7 @@ void rtw_hal_turbo_edca(_adapter *adapter)
 		return;
 	}
 
-	if ((pregpriv->wifi_spec == 1)) { /* || (pmlmeinfo->HT_enable == 0)) */
+	if (pregpriv->wifi_spec == 1) { /* || (pmlmeinfo->HT_enable == 0)) */
 		precvpriv->is_any_non_be_pkts = _FALSE;
 		return;
 	}
@@ -1934,5 +1934,4 @@ void rtw_phydm_watchdog(_adapter *adapter, bool in_lps)
 
 	return;
 }
-
 
