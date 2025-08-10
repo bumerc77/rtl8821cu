@@ -36,7 +36,7 @@ ccflags-y += -DCONFIG_LED_ENABLE
 # gcc-13
 #ccflags-y += -Wno-enum-int-mismatch
 #ccflags-y += -Wno-stringop-overread
-ccflags-y += -Wno-enum-conversion
+#ccflags-y += -Wno-enum-conversion
 #ccflags-y += -Wno-int-in-bool-context
 #ccflags-y += -Wno-empty-body
 
